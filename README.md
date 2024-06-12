@@ -1,9 +1,9 @@
 # TUTANKAMON
-## Jogo de Tabuleiro TUTANKAMON (IMAGEM DO PROJETO)
+- Jogo de Tabuleiro TUTANKAMON (IMAGEM DO PROJETO)
 ![image](https://github.com/jp-beltran2/TUTANKAMON/assets/162592110/b3e2f9a9-da73-4c45-b40b-cfe414bfe42b)
 
 
-# LINK DO JOGO: https://jp-beltran2.github.io/TUTANKAMON/
+- LINK DO JOGO: https://jp-beltran2.github.io/TUTANKAMON/
 
 # Projeto realizado utilizando
 - HTML
