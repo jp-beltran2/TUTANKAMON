@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUTANKAMON</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/pyramid.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="page">
+
+        <header>
+            <h1>TUTANKAMON</h1>
+        </header>
+        <div class="cards">
+            <div class="deck" id="missions-deck" onclick="drawCard('missions')">
+                <img src="/assets/Missão.png" alt="Imagem da Missão">
+            </div>
+            <div class="deck" id="riddles-deck" onclick="drawCard('riddles')">
+                <img src="/assets/Charada.png" alt="Imagem da Charada">
+            </div>
+        </div>
+        <div class="card-container">
+            <div class="card" id="card-display">
+                <div class="card-face card-front">
+                    <p>Clique em uma carta</p>
+                </div>
+                <div class="card-face card-back">
+                    <h2 id="card-type"></h2>
+                    <p id="card-text"></p>
+                    <button id="reveal-answer" onclick="revealAnswer()">Resposta</button>
+                    <p id="card-answer" style="display: none;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const missions = [
+            { text: "Faça o jogador da sua direita falar NÃO ate a próxima rodada}" },
+            { text: "Faça algum jogador colocar a mão na boca até a próxima rodada " },
+            { text: "Faça um jogador trocar de lugar com você sem dizer o motivo. " },
+            { text: "Faça o jogador da esquerda falar a palavra Esfinge." },
+            { text: "Faça um jogador levantar" },
+            { text: "Troque sua peça com a de outro jogador sem que ele perceba"},
+            { text: "Fale a palavra pirâmide no meio de uma frase aleatoria até a próxima rodada sem que seja percebido"},
+            { text: "Dance a dança do faraó por 10 segundos" },
+            { text: "Fique sem falar por 2 minuto sem que ninguém perceba " },
+            { text: "Fique na mesma posição durante uma rodada"},
+            { text: "Fale a palavra TUTANKAMON 3 vezes sem ser percebido"},
+            { text: "Faça um jogador derrubar uma peça do tabuleiro"}
+
+        ];
+
+        const riddles = [
+            { text: "O que passa diante do Sol do Egito mas não deixa sombra?", answer: "O vento" },
+            { text: "O que é cheia de furinhos mas consegue reter água?", answer: "Esponja" },
+            { text: "Quanto mais eu tiro, mais eu tenho", answer: "Foto" },
+            { text: "Quanto mais seca, mais molhada fica", answer: "Toalha" },
+            { text: "Sou metade homem, metade animal e guardo os segredos do deserto. Quem sou?", answer: "A Esfinge" },
+            { text: "Quem tem a cabeça de um chacal e protege os mortos?", answer: "Anúbis" },
+            { text: "O que é que quanto mais se tira, mais aumenta?", answer: "O buraco" },
+            { text: "O que é que tem cidades, mas não casas; florestas, mas não árvores; e rios, mas não água?", answer: "O mapa" },
+            { text: "O que é que passa pela cidade inteira, mas nunca se mexe?", answer: "A rua" },
+            { text: "O que é que está sempre no meio do caminho?", answer: "A letra 'H'" },
+            { text: "O que é, o que é: tem boca mas não come, tem leito mas não dorme?", answer: "Rio" },
+            { text: "O que é que é sempre velho e nunca é novo?", answer: "Dia" },
+            { text: "O que é que tem asas e não voa, tem boca e não fala, tem olhos e não vê?", answer: "Coruja" },
+            { text: "É feito de água, mas se for colocado dentro da água morrerá.", answer: "O gelo" },
+            { text: "Você tira a minha pele. Eu não choro. Você, sim.", answer: "A cebola" },
+            { text: "Está sempre a caminho, mas nunca chega.", answer: "Amanhã" },
+            { text: "Pertence a você, mas as outras pessoas usam mais do que você.", answer: "Seu nome" },
+            { text: "Não é vivo, mas cresce. Não tem pulmões, mas precisa de ar. Não tem boca, mas a água pode matá-lo.", answer: "O fogo" },
+            { text: "É preto quando você o compra, vermelho quando você o usa e cinza quando você o joga fora.", answer: "Carvão" },
+            { text: "Faz duas pessoas a partir de uma só.", answer: "Espelho" },
+            { text: "Você me tem hoje e amanhã você me terá ainda mais. Conforme o tempo passa, eu não sou nada fácil de guardar. Não ocupo nenhum espaço, mas estou sempre num único lugar. Eu sou o que você viu, não o que você vê.", answer: "Memória" },
+            { text: "Não tem pés, mãos ou asas, mas pode subir aos céus.", answer: "Fumaça" },
+            { text: "Quanto mais disso há, menos você vê.", answer: "Escuridão" },
+            { text: "Pode ser quebrado, mas nunca segurado?", answer: "Uma promessa" },
+            { text: "Quando você tem, jamais partilha. Quando partilha, perde imediatamente?", answer: "Um segredo" },
+            { text: "Quando você me vira de lado, sou tudo. Quando me corta ao meio, não sou nada.", answer: "O número 8" },
+            { text: "O que é que nasce grande e morre pequeno?", answer: "O lápis" },
+            { text: "O que é o que é? Dá muitas voltas e não sai do lugar.", answer: "O relógio" },
+            { text: "O que sobe quando a chuva desce?", answer: "O guarda-chuva" },
+            { text: "É leve como uma pluma, mas nem o mais forte homem pode segurar por muito tempo.", answer: "A respiração" },
+            { text: "Sem sair do seu cantinho, é capaz de viajar ao redor do mundo?", answer: "O selo" },
+            { text: "Atravessa o rio, mas nunca se molha?", answer: "Ponte" },
+            { text: "O que é que tem mais de dez cabeças e não sabe pensar?", answer: "Uma caixa de fósforos" },
+            { text: "O que é grande antes de ser pequena?", answer: "Vela" },
+            { text: "Tem dente e cabeça, mas não é animal e nem gente.", answer: "Alho" },
+            { text: "Tem cauda, mas não é cão; não tem asas, mas sabe voar. Se a largam, não sobe, e sai ao vento a brincar.", answer: "Pipa" },
+            { text: "Qual é a máquina que tem o poder de parar o tempo?", answer: "A máquina fotográfica" },
+            { text: "O que está acima do rei?", answer: "A coroa" },
+            { text: "Na televisão cobre um país; no futebol, atrai a bola; em casa incentiva o lazer.", answer: "A rede" },
+            { text: "Sou uma ave bonita, tente meu nome escrever, leia de trás para a frente e o mesmo nome irá ver.", answer: "Arara" }
+        ];
+
+
+        let flipTimeout;
+
+        function drawCard(deck) {
+            clearTimeout(flipTimeout);  // Clear any existing timeouts
+            let cardContent = {};
+            if (deck === 'missions') {
+                cardContent = missions[Math.floor(Math.random() * missions.length)];
+                document.getElementById('card-type').innerText = "Missão";
+            } else if (deck === 'riddles') {
+                cardContent = riddles[Math.floor(Math.random() * riddles.length)];
+                document.getElementById('card-type').innerText = "Charada";
+            }
+            document.getElementById('card-text').innerText = cardContent.text;
+            document.getElementById('card-answer').innerText = cardContent.answer;
+            document.getElementById('card-answer').style.display = 'none';
+            document.getElementById('reveal-answer').style.display = 'block';
+            document.getElementById('card-display').classList.add('flipped');
+
+            flipTimeout = setTimeout(() => {
+                document.getElementById('card-display').classList.remove('flipped');
+            }, 60000);  // Set the timeout to flip the card back after 60 seconds
+        }
+
+        function revealAnswer() {
+            document.getElementById('card-answer').style.display = 'block';
+            document.getElementById('reveal-answer').style.display = 'none';
+        }
+
+
+        const card = document.getElementById('card');
+        const text = document.getElementById('text');
+
+ 
+
+    </script>
+</body>
+</html>
