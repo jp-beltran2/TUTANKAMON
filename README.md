@@ -27,5 +27,5 @@
 - Você pode tentar adivinhar a resposta ao enigma.
 
 ## Resposta:
-Após escolher uma carta, você pode clicar no botão "Mostrar Resposta" para revelar a resposta à missão ou charada.
+Após escolher uma carta, você pode clicar no botão "Mostrar Resposta" para revelar a resposta à charada.
 Se optar por não revelar a resposta, a carta será virada automaticamente de volta após 60 segundos.
