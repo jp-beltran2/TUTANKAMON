@@ -18,10 +18,10 @@
         </header>
         <div class="cards">
             <div class="deck" id="missions-deck" onclick="drawCard('missions')">
-                <img src="./assets/Missão.png" alt="Imagem da Missão">
+                <img src="/assets/Missão.png" alt="Imagem da Missão">
             </div>
             <div class="deck" id="riddles-deck" onclick="drawCard('riddles')">
-                <img src="./assets/Charada.png" alt="Imagem da Charada">
+                <img src="/assets/Charada.png" alt="Imagem da Charada">
             </div>
         </div>
         <div class="card-container">
@@ -56,47 +56,68 @@
         ];
 
         const riddles = [
-            { text: "O que passa diante do Sol do Egito mas não deixa sombra?", answer: "O vento" },
-            { text: "O que é cheia de furinhos mas consegue reter água?", answer: "Esponja" },
-            { text: "Quanto mais eu tiro, mais eu tenho", answer: "Foto" },
-            { text: "Quanto mais seca, mais molhada fica", answer: "Toalha" },
-            { text: "Sou metade homem, metade animal e guardo os segredos do deserto. Quem sou?", answer: "A Esfinge" },
-            { text: "Quem tem a cabeça de um chacal e protege os mortos?", answer: "Anúbis" },
-            { text: "O que é que quanto mais se tira, mais aumenta?", answer: "O buraco" },
-            { text: "O que é que tem cidades, mas não casas; florestas, mas não árvores; e rios, mas não água?", answer: "O mapa" },
-            { text: "O que é que passa pela cidade inteira, mas nunca se mexe?", answer: "A rua" },
-            { text: "O que é que está sempre no meio do caminho?", answer: "A letra 'H'" },
-            { text: "O que é, o que é: tem boca mas não come, tem leito mas não dorme?", answer: "Rio" },
-            { text: "O que é que é sempre velho e nunca é novo?", answer: "Dia" },
-            { text: "O que é que tem asas e não voa, tem boca e não fala, tem olhos e não vê?", answer: "Coruja" },
-            { text: "É feito de água, mas se for colocado dentro da água morrerá.", answer: "O gelo" },
-            { text: "Você tira a minha pele. Eu não choro. Você, sim.", answer: "A cebola" },
-            { text: "Está sempre a caminho, mas nunca chega.", answer: "Amanhã" },
-            { text: "Pertence a você, mas as outras pessoas usam mais do que você.", answer: "Seu nome" },
-            { text: "Não é vivo, mas cresce. Não tem pulmões, mas precisa de ar. Não tem boca, mas a água pode matá-lo.", answer: "O fogo" },
-            { text: "É preto quando você o compra, vermelho quando você o usa e cinza quando você o joga fora.", answer: "Carvão" },
-            { text: "Faz duas pessoas a partir de uma só.", answer: "Espelho" },
-            { text: "Você me tem hoje e amanhã você me terá ainda mais. Conforme o tempo passa, eu não sou nada fácil de guardar. Não ocupo nenhum espaço, mas estou sempre num único lugar. Eu sou o que você viu, não o que você vê.", answer: "Memória" },
-            { text: "Não tem pés, mãos ou asas, mas pode subir aos céus.", answer: "Fumaça" },
-            { text: "Quanto mais disso há, menos você vê.", answer: "Escuridão" },
-            { text: "Pode ser quebrado, mas nunca segurado?", answer: "Uma promessa" },
-            { text: "Quando você tem, jamais partilha. Quando partilha, perde imediatamente?", answer: "Um segredo" },
-            { text: "Quando você me vira de lado, sou tudo. Quando me corta ao meio, não sou nada.", answer: "O número 8" },
-            { text: "O que é que nasce grande e morre pequeno?", answer: "O lápis" },
-            { text: "O que é o que é? Dá muitas voltas e não sai do lugar.", answer: "O relógio" },
-            { text: "O que sobe quando a chuva desce?", answer: "O guarda-chuva" },
-            { text: "É leve como uma pluma, mas nem o mais forte homem pode segurar por muito tempo.", answer: "A respiração" },
-            { text: "Sem sair do seu cantinho, é capaz de viajar ao redor do mundo?", answer: "O selo" },
-            { text: "Atravessa o rio, mas nunca se molha?", answer: "Ponte" },
-            { text: "O que é que tem mais de dez cabeças e não sabe pensar?", answer: "Uma caixa de fósforos" },
-            { text: "O que é grande antes de ser pequena?", answer: "Vela" },
-            { text: "Tem dente e cabeça, mas não é animal e nem gente.", answer: "Alho" },
-            { text: "Tem cauda, mas não é cão; não tem asas, mas sabe voar. Se a largam, não sobe, e sai ao vento a brincar.", answer: "Pipa" },
-            { text: "Qual é a máquina que tem o poder de parar o tempo?", answer: "A máquina fotográfica" },
-            { text: "O que está acima do rei?", answer: "A coroa" },
-            { text: "Na televisão cobre um país; no futebol, atrai a bola; em casa incentiva o lazer.", answer: "A rede" },
-            { text: "Sou uma ave bonita, tente meu nome escrever, leia de trás para a frente e o mesmo nome irá ver.", answer: "Arara" }
-        ];
+        { text: "Quem o fabrica não precisa, quem compra não pode usar e quem usa não pode vê-lo nem senti-lo.", answer: "O caixão." },
+        { text: "Estou no mar há muitos anos, mas ainda não sei nadar... Quem sou eu?", answer: "A areia." },
+        { text: "Eu tenho cara mas não tenho corpo. O que sou eu?", answer: "Uma moeda." },
+        { text: "O que sobe e desce, mas está sempre no mesmo lugar?", answer: "As escadas." },
+        { text: "O que é que tem quatro pernas, mas não pode caminhar?", answer: "A mesa." },
+        { text: "O que é que, quando você dá aos outros, precisa manter?", answer: "A palavra." },
+        { text: "Imagine que você está em uma sala escura. Nela há um fósforo, uma lâmpada de querosene, uma vela e uma lareira. O que você acenderia primeiro?", answer: "O fósforo." },
+        { text: "Eu falo, mas não tenho boca. Eu ouço, mas não tenho ouvidos. Não tenho corpo, mas vivo com o vento. Quem sou eu?", answer: "O eco." },
+        { text: "Dois homens estão no deserto. Ambos estão com uma mochila nas costas. A mochila de um está aberta e vazia. A mochila do outro está fechada e guarda alguma coisa. Um dos homens está morto. O que há dentro da mochila fechada?", answer: "Um paraquedas." },
+        { text: "Ponha os dedos nos meus olhos que eu abrirei as minhas potentes mandíbulas. E vou devorar tudo o que vier pela frente: roupas, penas, papéis. Quem sou eu?", answer: "Uma tesoura." },
+        { text: "O que dá o poder de atravessar paredes?", answer: "A porta." },
+        { text: "A formiga tem maior do que o leão.", answer: "O nome." },
+        { text: "No começo estou seco. No final estou molhado. Entro leve, mas saio pesado. O que eu sou?", answer: "O saquinho de chá." },
+        { text: "Eu sou mais leve do que aquilo de que sou feito e a maior parte de mim está oculta. Quem eu sou?", answer: "Iceberg." },
+        { text: "Está sempre a sua frente mas você jamais poderá vê-lo.", answer: "O futuro." },
+        { text: "O que é, o que é? Todo mês tem menos abril.", answer: "A letra O." },
+        { text: "Quem é o filho do seu pai que não é seu irmão?", answer: "Você." },
+        { text: "Durante qual mês as pessoas dormem menos?", answer: "Fevereiro, porque é o mês mais curto." },
+        { text: "O que é, o que é? Destrói tudo com três letras.", answer: "Fim." },
+        { text: "Qual a banda preferida dos mortos?", answer: "Sepultura." },
+        { text: "Qual é o meio de transporte que não faz curva?", answer: "O elevador." },
+        { text: "Eu faço a barba diversas vezes por dia e continuo barbudo. Quem sou eu?", answer: "Barbeiro." },
+        { text: "O que é que deixa todo mundo ver através da parede?", answer: "A janela." },
+        { text: "Qual o time mais quente de todos?", answer: "Botafogo." },
+        { text: "O que tem pescoço mas não tem cabeça?", answer: "Garrafa." },
+        { text: "Eu sou fácil de levantar, mas difícil de arremessar. O que sou eu?", answer: "Uma pena." },
+        {text: "Aparece a noite sem ser chamada, é perdida no dia sem ser roubada. O que é?", answer: "Estrela." },
+        { text: "Você pode me ver, mas não pode me alcançar. O que sou eu?", answer: "Horizonte." },
+        { text: "O que é que não pode ser visto, não pode ser tocado, mas pode ser ouvido?", answer: "A voz." },
+        { text: "Tem mês tem, menos Abril.", answer: "A letra O." },
+        { text: "O que é, o que é? Tem ouvido mas não escuta, tem boca mas não fala, tem perna mas não anda.", answer: "Um boneco." },
+        { text: "Tem boca mas não fala.", answer: "Fogão." },
+        { text: "Voa sem ter asas e chora sem ter olhos.", answer: "Nuvem." },
+        { text: "O que nada mas não voa?", answer: "Pinguim." },
+        { text: "O que nasce grande e morre pequeno?", answer: "O lápis." },
+        { text: "O que é, o que é? Caminha sem pés, voa sem asas e pousa onde quiser.", answer: "Pensamento." },
+        { text: "O que é que cai na água e quebra, mas cai no chão e não quebra?", answer: "O papel." },
+        { text: "Estou sempre correndo mas não tenho pés. Você precisa de mim mas eu não preciso de você. O que sou eu?", answer: "O tempo." },
+        { text: "Eu não sou hóspede nem morador, mas esse lugar é meu. O que sou eu?", answer: "Casa." },
+        { text: "O que começa mas não tem fim e é o fim de tudo que começa?", answer: "A morte." },
+        { text: "O que passa diante do Sol do Egito mas não deixa sombra?", answer: "O vento" },
+        { text: "O que é cheia de furinhos mas consegue reter água?", answer: "Esponja" },
+        { text: "Quanto mais eu tiro, mais eu tenho", answer: "Foto" },
+        { text: "Quanto mais seca, mais molhada fica", answer: "Toalha" },
+        { text: "Sou metade homem, metade animal e guardo os segredos do deserto. Quem sou?", answer: "A Esfinge" },
+        { text: "Quem tem a cabeça de um chacal e protege os mortos?", answer: "Anúbis" },
+        { text: "O que é que quanto mais se tira, mais aumenta?", answer: "O buraco" },
+        { text: "O que é que tem cidades, mas não casas; florestas, mas não árvores; e rios, mas não água?", answer: "O mapa" },
+        { text: "O que é que passa pela cidade inteira, mas nunca se mexe?", answer: "A rua" },
+        { text: "O que é que está sempre no meio do caminho?", answer: "A letra 'H'" },
+        { text: "O que é, o que é: tem boca mas não come, tem leito mas não dorme?", answer: "Rio" },
+        { text: "O que é que é sempre velho e nunca é novo?", answer: "Dia" },
+        { text: "O que é que tem asas e não voa, tem boca e não fala, tem olhos e não vê?", answer: "Coruja" },
+        { text: "É feito de água, mas se for colocado dentro da água morrerá.", answer: "O gelo" },
+        { text: "Você tira a minha pele. Eu não choro. Você, sim.", answer: "A cebola" },
+        { text: "Está sempre a caminho, mas nunca chega.", answer: "Amanhã" },
+        { text: "Pertence a você, mas as outras pessoas usam mais do que você.", answer: "Seu nome" },
+        { text: "Não é vivo, mas cresce. Não tem pulmões, mas precisa de ar. Não tem boca, mas a água pode matá-lo.", answer: "O fogo" },
+        { text: "É preto quando você o compra, vermelho quando você o usa e cinza quando você o joga fora.", answer: "Carvão" },
+        { text: "Faz duas pessoas a partir de uma só.", answer: "Espelho" }
+];
+
 
 
         let flipTimeout;
